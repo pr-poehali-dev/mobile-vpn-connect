@@ -32,10 +32,12 @@ export interface VlessConfig {
 
 export const SERVERS: Server[] = [
   { id: "1", country: "Нидерланды", city: "Амстердам", flag: "🇳🇱", ping: 28, load: 34, region: "Европа", protocol: "WireGuard" },
-  { id: "2", country: "Нидерланды", city: "Роттердам", flag: "🇳🇱", ping: 31, load: 24, region: "Европа", protocol: "WireGuard" },
-  { id: "3", country: "Германия", city: "Франкфурт", flag: "🇩🇪", ping: 35, load: 61, region: "Европа", protocol: "OpenVPN" },
-  { id: "4", country: "США", city: "Нью-Йорк", flag: "🇺🇸", ping: 112, load: 78, region: "Америка", protocol: "OpenVPN" },
-  { id: "5", country: "Япония", city: "Токио", flag: "🇯🇵", ping: 198, load: 30, region: "Азия", protocol: "WireGuard" },
+  { id: "2", country: "США", city: "Нью-Йорк", flag: "🇺🇸", ping: 112, load: 45, region: "Америка", protocol: "WireGuard" },
+  { id: "3", country: "Чехия", city: "Прага", flag: "🇨🇿", ping: 32, load: 28, region: "Европа", protocol: "WireGuard" },
+  { id: "4", country: "Германия", city: "Франкфурт", flag: "🇩🇪", ping: 35, load: 51, region: "Европа", protocol: "WireGuard" },
+  { id: "5", country: "Польша", city: "Варшава", flag: "🇵🇱", ping: 30, load: 22, region: "Европа", protocol: "WireGuard" },
+  { id: "6", country: "Великобритания", city: "Лондон", flag: "🇬🇧", ping: 42, load: 60, region: "Европа", protocol: "WireGuard" },
+  { id: "7", country: "Латвия", city: "Рига", flag: "🇱🇻", ping: 25, load: 18, region: "Европа", protocol: "WireGuard" },
 ];
 
 export const HISTORY: LogEntry[] = [
