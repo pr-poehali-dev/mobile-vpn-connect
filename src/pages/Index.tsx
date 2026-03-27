@@ -322,7 +322,7 @@ export default function Index() {
                   style={{ boxShadow: "0 0 8px rgba(0,255,136,0.8)" }}
                 />
                 <span className="font-mono-vpn text-[10px] tracking-[0.4em] text-green-400 uppercase">
-                  SecureVPN
+                  I VPN
                 </span>
               </div>
               <h1 className="text-white text-xl font-semibold tracking-tight">Панель управления</h1>
