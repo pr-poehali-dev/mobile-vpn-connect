@@ -1,0 +1,18 @@
+{
+  "name": "I VPN — Защищённое соединение",
+  "short_name": "I VPN",
+  "description": "Безопасное VPN-подключение",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#060b12",
+  "theme_color": "#060b12",
+  "icons": [
+    {
+      "src": "https://cdn.poehali.dev/projects/a460c5c5-e480-402f-8479-c60092ef636c/files/dd771a8b-f7e3-4c4e-9fe9-5513ef68df78.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    }
+  ]
+}
