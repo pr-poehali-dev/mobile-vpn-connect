@@ -62,76 +62,68 @@ export default function Index() {
     setTab("connect");
   };
 
+  const navItems = [
+    { id: "connect", label: "Главная", icon: "Zap" },
+    { id: "servers", label: "Серверы", icon: "Globe" },
+    { id: "history", label: "История", icon: "Activity" },
+    { id: "settings", label: "Настройки", icon: "Settings" },
+  ] as const;
+
   return (
-    <div className="min-h-screen scanline" style={{ background: "var(--vpn-dark)" }}>
+    <div className="mobile-app scanline" style={{ background: "var(--vpn-dark)" }}>
       <EncryptBG />
       <HexGrid />
 
-      <div className="relative z-10 max-w-sm mx-auto min-h-screen flex flex-col">
+      <div className="relative z-10 flex flex-col h-full">
+        {/* Status bar spacer */}
+        <div className="safe-top" />
+
         {/* Header */}
-        <div className="px-5 pt-10 pb-4">
+        <div className="px-5 pt-4 pb-3 flex-shrink-0">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
               <img
                 src="https://cdn.poehali.dev/projects/a460c5c5-e480-402f-8479-c60092ef636c/files/8e831d8c-0e7b-4b6f-92f8-a898e5e80c6f.jpg"
                 alt="I VPN"
-                className="w-12 h-12 rounded-xl object-cover"
+                className="w-10 h-10 rounded-xl object-cover"
                 style={{ boxShadow: "0 0 16px rgba(0,255,136,0.25)" }}
               />
               <div>
                 <div className="flex items-center gap-2 mb-0.5">
                   <div
-                    className="w-2 h-2 rounded-full bg-green-400"
-                    style={{ boxShadow: "0 0 8px rgba(0,255,136,0.8)" }}
+                    className="w-1.5 h-1.5 rounded-full"
+                    style={{
+                      background: connState === "connected" ? "#00ff88" : connState === "connecting" ? "#fbbf24" : "#64748b",
+                      boxShadow: connState === "connected" ? "0 0 8px rgba(0,255,136,0.8)" : "none",
+                    }}
                   />
-                  <span className="font-mono-vpn text-[10px] tracking-[0.4em] text-green-400 uppercase">
-                    I VPN
-                  </span>
+                  <span className="font-mono-vpn text-[10px] tracking-[0.3em] text-green-400 uppercase">I VPN</span>
                 </div>
-                <h1 className="text-white text-xl font-semibold tracking-tight">Панель управления</h1>
+                <h1 className="text-white text-base font-semibold tracking-tight leading-none">
+                  {tab === "connect" && "Подключение"}
+                  {tab === "servers" && "Серверы"}
+                  {tab === "history" && "История"}
+                  {tab === "settings" && "Настройки"}
+                </h1>
               </div>
             </div>
-            <button
-              onClick={() => setTab("settings")}
-              className={`w-9 h-9 rounded-lg flex items-center justify-center border transition-colors ${
-                tab === "settings"
-                  ? "bg-green-500/20 border-green-500/40 text-green-400"
-                  : "bg-white/[0.04] border-white/[0.06] hover:bg-white/[0.08] text-slate-400"
-              }`}
+
+            {/* Connection status badge */}
+            <div
+              className="px-3 py-1 rounded-full text-xs font-mono-vpn"
+              style={{
+                background: connState === "connected" ? "rgba(0,255,136,0.12)" : "rgba(255,255,255,0.04)",
+                border: `1px solid ${connState === "connected" ? "rgba(0,255,136,0.3)" : "rgba(255,255,255,0.06)"}`,
+                color: connState === "connected" ? "#00ff88" : connState === "connecting" ? "#fbbf24" : "#64748b",
+              }}
             >
-              <Icon name="Settings" size={16} />
-            </button>
+              {connState === "connected" ? "ONLINE" : connState === "connecting" ? "..." : "OFF"}
+            </div>
           </div>
         </div>
 
-        {/* Tabs */}
-        <div className="px-5 mb-6">
-          <div className="flex gap-1 p-1 rounded-xl bg-white/[0.03] border border-white/[0.05]">
-            {(
-              [
-                { id: "connect", label: "Подключение", icon: "Zap" },
-                { id: "servers", label: "Серверы", icon: "Globe" },
-                { id: "history", label: "История", icon: "Activity" },
-              ] as const
-            ).map((t) => (
-              <button
-                key={t.id}
-                onClick={() => setTab(t.id)}
-                className={`flex-1 flex items-center justify-center gap-1.5 py-2 rounded-lg text-xs font-medium transition-all duration-200 ${
-                  tab === t.id
-                    ? "bg-green-500/20 text-green-400 shadow-[inset_0_0_20px_rgba(0,255,136,0.1)]"
-                    : "text-slate-500 hover:text-slate-300"
-                }`}
-              >
-                <Icon name={t.icon} size={12} />
-                {t.label}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        {/* Content */}
-        <div className="flex-1 px-5 pb-8 overflow-y-auto">
+        {/* Content area */}
+        <div className="flex-1 overflow-y-auto overflow-x-hidden px-4 pb-2">
           {tab === "connect" && (
             <ConnectTab
               connState={connState}
@@ -170,6 +162,47 @@ export default function Index() {
               onSplitTunnelChange={setSplitTunnel}
             />
           )}
+        </div>
+
+        {/* Bottom Tab Bar */}
+        <div
+          className="flex-shrink-0 px-2 pt-2 pb-safe"
+          style={{
+            background: "linear-gradient(to top, var(--vpn-dark) 80%, transparent)",
+            borderTop: "1px solid rgba(255,255,255,0.06)",
+          }}
+        >
+          <div className="flex">
+            {navItems.map((item) => {
+              const active = tab === item.id;
+              return (
+                <button
+                  key={item.id}
+                  onClick={() => setTab(item.id)}
+                  className="flex-1 flex flex-col items-center justify-center gap-1 py-2 rounded-xl transition-all duration-200 touch-target"
+                  style={{
+                    background: active ? "rgba(0,255,136,0.08)" : "transparent",
+                    WebkitTapHighlightColor: "transparent",
+                  }}
+                >
+                  <div
+                    style={{
+                      color: active ? "#00ff88" : "#4a5568",
+                      filter: active ? "drop-shadow(0 0 6px rgba(0,255,136,0.6))" : "none",
+                    }}
+                  >
+                    <Icon name={item.icon} size={20} />
+                  </div>
+                  <span
+                    className="text-[10px] font-medium tracking-wide"
+                    style={{ color: active ? "#00ff88" : "#4a5568" }}
+                  >
+                    {item.label}
+                  </span>
+                </button>
+              );
+            })}
+          </div>
         </div>
       </div>
     </div>
