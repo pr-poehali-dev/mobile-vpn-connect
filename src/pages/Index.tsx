@@ -28,14 +28,10 @@ interface LogEntry {
 
 const SERVERS: Server[] = [
   { id: "1", country: "Нидерланды", city: "Амстердам", flag: "🇳🇱", ping: 28, load: 34, region: "Европа", protocol: "WireGuard" },
-  { id: "2", country: "Германия", city: "Франкфурт", flag: "🇩🇪", ping: 35, load: 61, region: "Европа", protocol: "OpenVPN" },
-  { id: "3", country: "Финляндия", city: "Хельсинки", flag: "🇫🇮", ping: 42, load: 22, region: "Европа", protocol: "WireGuard" },
+  { id: "2", country: "Нидерланды", city: "Роттердам", flag: "🇳🇱", ping: 31, load: 24, region: "Европа", protocol: "WireGuard" },
+  { id: "3", country: "Германия", city: "Франкфурт", flag: "🇩🇪", ping: 35, load: 61, region: "Европа", protocol: "OpenVPN" },
   { id: "4", country: "США", city: "Нью-Йорк", flag: "🇺🇸", ping: 112, load: 78, region: "Америка", protocol: "OpenVPN" },
-  { id: "5", country: "США", city: "Лос-Анджелес", flag: "🇺🇸", ping: 145, load: 45, region: "Америка", protocol: "WireGuard" },
-  { id: "6", country: "Япония", city: "Токио", flag: "🇯🇵", ping: 198, load: 30, region: "Азия", protocol: "WireGuard" },
-  { id: "7", country: "Сингапур", city: "Сингапур", flag: "🇸🇬", ping: 175, load: 52, region: "Азия", protocol: "OpenVPN" },
-  { id: "8", country: "Швейцария", city: "Цюрих", flag: "🇨🇭", ping: 45, load: 18, region: "Европа", protocol: "WireGuard" },
-  { id: "9", country: "Канада", city: "Торонто", flag: "🇨🇦", ping: 98, load: 40, region: "Америка", protocol: "OpenVPN" },
+  { id: "5", country: "Япония", city: "Токио", flag: "🇯🇵", ping: 198, load: 30, region: "Азия", protocol: "WireGuard" },
 ];
 
 const HISTORY: LogEntry[] = [
@@ -451,21 +447,7 @@ export default function Index() {
                 </div>
               </div>
 
-              {/* Quick server */}
-              <div className="w-full">
-                <div className="flex items-center justify-between mb-2">
-                  <span className="font-mono-vpn text-[10px] text-slate-500 tracking-widest">
-                    ТЕКУЩИЙ СЕРВЕР
-                  </span>
-                  <button
-                    onClick={() => setTab("servers")}
-                    className="text-[10px] text-green-400 font-mono-vpn hover:text-green-300 transition-colors"
-                  >
-                    СМЕНИТЬ →
-                  </button>
-                </div>
-                <ServerCard server={selectedServer} selected onSelect={() => {}} />
-              </div>
+
             </div>
           )}
 
