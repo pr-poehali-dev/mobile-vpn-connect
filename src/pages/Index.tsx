@@ -315,17 +315,25 @@ export default function Index() {
         {/* Header */}
         <div className="px-5 pt-10 pb-4">
           <div className="flex items-center justify-between">
-            <div>
-              <div className="flex items-center gap-2 mb-0.5">
-                <div
-                  className="w-2 h-2 rounded-full bg-green-400"
-                  style={{ boxShadow: "0 0 8px rgba(0,255,136,0.8)" }}
-                />
-                <span className="font-mono-vpn text-[10px] tracking-[0.4em] text-green-400 uppercase">
-                  I VPN
-                </span>
+            <div className="flex items-center gap-3">
+              <img
+                src="https://cdn.poehali.dev/projects/a460c5c5-e480-402f-8479-c60092ef636c/files/8e831d8c-0e7b-4b6f-92f8-a898e5e80c6f.jpg"
+                alt="I VPN"
+                className="w-12 h-12 rounded-xl object-cover"
+                style={{ boxShadow: "0 0 16px rgba(0,255,136,0.25)" }}
+              />
+              <div>
+                <div className="flex items-center gap-2 mb-0.5">
+                  <div
+                    className="w-2 h-2 rounded-full bg-green-400"
+                    style={{ boxShadow: "0 0 8px rgba(0,255,136,0.8)" }}
+                  />
+                  <span className="font-mono-vpn text-[10px] tracking-[0.4em] text-green-400 uppercase">
+                    I VPN
+                  </span>
+                </div>
+                <h1 className="text-white text-xl font-semibold tracking-tight">Панель управления</h1>
               </div>
-              <h1 className="text-white text-xl font-semibold tracking-tight">Панель управления</h1>
             </div>
             <button className="w-9 h-9 rounded-lg flex items-center justify-center bg-white/[0.04] border border-white/[0.06] hover:bg-white/[0.08] transition-colors">
               <Icon name="Settings" size={16} className="text-slate-400" />
